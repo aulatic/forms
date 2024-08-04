@@ -68,7 +68,7 @@ ARG PHP_PACKAGES
 
 RUN apt-get update \
     && apt-get install -y \
-        supervisor nginx sudo postgresql-15 redis \
+        supervisor nginx sudo redis \
         software-properties-common \
     && add-apt-repository ppa:ondrej/php \
     && apt-get update \
