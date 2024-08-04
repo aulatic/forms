@@ -18,7 +18,7 @@ RUN cp .env.docker .env
 RUN npm run build
 
 # syntax=docker/dockerfile:1.3-labs
-FROM --platform=linux/amd64 ubuntu:23.04 AS php-dependency-installer
+FROM --platform=linux/amd64 ubuntu:24.04 AS php-dependency-installer
 
 ARG PHP_PACKAGES
 
@@ -53,7 +53,7 @@ ADD tests tests
 RUN php artisan package:discover --ansi
 
 
-FROM --platform=linux/amd64 ubuntu:23.04
+FROM --platform=linux/amd64 ubuntu:24.04
 
 # supervisord is a process manager which will be responsible for managing the
 # various server processes.  These are configured in docker/supervisord.conf
