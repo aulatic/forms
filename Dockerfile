@@ -68,8 +68,11 @@ ARG PHP_PACKAGES
 
 RUN apt-get update \
     && apt-get install -y \
-        supervisor nginx sudo postgresql-15 redis\
-        $PHP_PACKAGES php8.1-fpm wget\
+        supervisor nginx sudo postgresql-15 redis \
+        software-properties-common \
+    && add-apt-repository ppa:ondrej/php \
+    && apt-get update \
+    && apt-get install -y $PHP_PACKAGES php8.1-fpm wget \
     && apt-get clean
 
 RUN useradd nuxt && mkdir ~nuxt && chown nuxt ~nuxt
