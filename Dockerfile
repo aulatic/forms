@@ -51,7 +51,10 @@ ARG PHP_PACKAGES
 RUN apt-get update \
     && apt-get install -y \
         supervisor nginx sudo redis \
-        $PHP_PACKAGES php8.2-fpm wget \
+        software-properties-common \
+    && add-apt-repository ppa:ondrej/php \
+    && apt-get update \
+    && apt-get install -y $PHP_PACKAGES php8.2-fpm wget \
     && apt-get clean
 
 RUN useradd nuxt && mkdir ~nuxt && chown nuxt ~nuxt
