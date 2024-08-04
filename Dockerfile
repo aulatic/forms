@@ -63,6 +63,9 @@ WORKDIR /app
 
 ARG PHP_PACKAGES
 
+# Instalar wget y software-properties-common para añadir repositorios
+RUN apt-get update && apt-get install -y wget gnupg software-properties-common
+
 # Añadir el repositorio de PostgreSQL
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
 
