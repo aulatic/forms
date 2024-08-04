@@ -23,6 +23,9 @@ FROM --platform=linux/amd64 ubuntu:24.04 AS php-dependency-installer
 ARG PHP_PACKAGES
 
 RUN apt-get update \
+    && apt-get install -y software-properties-common \
+    && add-apt-repository ppa:ondrej/php \
+    && apt-get update \
     && apt-get install -y $PHP_PACKAGES composer
 
 WORKDIR /app
